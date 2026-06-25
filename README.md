@@ -14,6 +14,8 @@ This repository contains the code required to reproduce the analyses from the pa
 
 # Data Availability
 
+## Name survey
+
 Data from this project is publicly available in the following OSF repository:
 
 [The Perception of Names in Experimental Studies on Ethnic Origin: A Cross-National Validation in Europe - DATASET](https://osf.io/yd5qv/overview)
@@ -21,6 +23,10 @@ Data from this project is publicly available in the following OSF repository:
 More information about the dataset can be found in the following paper:
 
 Ghekiere, A., Martiniello, B., Capistrano, D. et al. The Perception of Names in Experimental Studies on Ethnic Origin: A Cross-National Validation in Europe. Sci Data 12, 1883 (2025). https://doi.org/10.1038/s41597-025-06153-8 
+
+## Field experiment 
+
+Data with results from the field experiment (second part of the paper) is currently under embargo.
 
 # Description of programs/code
 

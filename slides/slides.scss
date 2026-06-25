@@ -1,0 +1,142 @@
+/*-- scss:defaults --*/
+
+$font-family-sans-serif: "Roboto", sans-serif;
+$presentation-heading-color: #223451;
+$presentation-title-slide-text-align: left;
+$code-block-font-size: 0.6em;
+$code-color: #5f5f5f;
+$presentation-h1-font-size: 1.5em;
+$presentation-h2-font-size: 1.3em;
+$presentation-font-size-root: 35px;
+$presentation-line-height: 1.5;
+
+/*-- scss:rules --*/
+
+#title-slide {
+  .quarto-title-author-name {
+    font-size: 0.4em;
+  }
+  
+  .quarto-title-affiliation {
+    font-size: 0.3em;
+  }
+
+  .date {
+    font-size: 0.5em;
+    font-weight: 100;
+  }
+}
+
+
+details>summary {
+  font-size: 0.75em;
+}
+
+.inverted {
+  background-color: #223451 !important;
+}
+
+.small {
+  font-size: 0.75em;
+}
+
+.big {
+  font-size: 1.75em;
+}
+
+.giant {
+  font-size: 3em;
+}
+
+.reveal .slide .in-out {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+  padding-left: 1em;
+  background: #E8E8E8;
+  font-family: $font-family-monospace;
+  font-size: 0.6em;
+}
+
+.reveal .slide .goal {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+  padding-left: 1em;
+  background: #ccddeb;
+}
+
+.reveal .slide aside,
+.reveal .slide div.aside {
+  font-size: 0.5em;
+  bottom: 0px;
+}
+
+.reveal .slide-logo.hide-logo {
+  display: none !important;
+}
+
+.reveal .progress {
+  height: 1%;
+}
+
+.navigate-left .controls-arrow,
+.navigate-right .controls-arrow {
+  font-size: 90%;
+  color: grey;
+}
+
+#title-slide {
+  .quarto-title-authors {
+    justify-content: left;
+  
+    .quarto-title-author {
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+    }
+  }
+}
+
+.reveal .progress {
+  background: rgba(0, 0, 0, 0.2);
+  color: #7e588aff;
+  height: 1%;
+}
+
+.reveal .slide-number > a[href*='title-slide'] {
+  display: none;
+}
+
+.reveal .slide-logo {
+  height: 70px !important;
+  // width: 160px !important;
+  // max-width: unset !important;
+  max-height: unset !important;
+}
+
+
+/*-- highlight animation --*/
+mark {
+  background: linear-gradient(
+    90deg,
+    #efeb14e0 50%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+}
+
+/* animation triggers only when class is added */
+mark.animate {
+  animation: highlight 1.5s ease 0.3s forwards;
+}
+
+/* keyframes */
+@keyframes highlight {
+  to {
+    background-position: 0 0;
+  }
+}
