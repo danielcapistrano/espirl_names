@@ -1,6 +1,7 @@
 ---
 title: "Unsettled signals"
 subtitle: "Labour market discrimination against Roma in Spain and Travellers in Ireland"
+output-dir: "../docs"
 author: 
   - name: Daniel Capistrano
     orcid: 0000-0002-8157-5564
