@@ -2,27 +2,27 @@
 title: "Unsettled signals"
 subtitle: "Labour market discrimination against Roma in Spain and Travellers in Ireland"
 output-dir: "../docs"
-author: 
-  - name: Daniel Capistrano
-    orcid: 0000-0002-8157-5564
-    affiliations: ESRI
-  - name: Alvaro Suarez
-    orcid: 0000-0002-8157-5564
-    affiliations: CSIC
-  - name: Mat Creighton
-    orcid: 0000-0002-8157-5564
-    affiliations: UCD
-  - name: Fran McGinnity
-    orcid: 0000-0002-8157-5564
-    affiliations: ESRI
-  - name: Evan Carron-Kee
-    orcid: 0000-0002-8157-5564
-    affiliations: ESRI
-  - name: Hector Cebolla
-    orcid: 0000-0002-8157-5564
-    affiliations: CSIC
-  - name: "."
-    affiliations: ""
+author: "Daniel Capistrano, Alvaro Suarez-Vergne, Mat Creighton, <br>Fran McGinnity, Evan Carron-Kee, Hector Cebolla-Boado"
+  # - name: Daniel Capistrano
+  #   orcid: 0000-0002-8157-5564
+  #   affiliations: ESRI
+  # - name: Alvaro Suarez-Vergne
+  #   orcid: 0000-0003-2787-4560
+  #   affiliations: CSIC
+  # - name: Mat Creighton
+  #   orcid: 0000-0002-1596-6049
+  #   affiliations: UCD
+  # - name: Fran McGinnity
+  #   orcid: 0000-0002-2184-315X
+  #   affiliations: ESRI
+  # - name: Evan Carron-Kee
+  #   orcid: 0009-0001-3105-2554
+  #   affiliations: ESRI
+  # - name: Hector Cebolla-Boado
+  #   orcid: 0000-0002-5804-8715
+  #   affiliations: CSIC
+  # - name: "."
+  #   affiliations: ""
 title-slide-attributes:
     data-background-image: img/pres_cover.png
     data-background-size: contain
@@ -256,21 +256,26 @@ vars_control <- c(
   "fulltime_job", "childcare_success", "housing_success", "occupation"
 )
 
-m_naive  <- get_disc_model(
-  df_exp, outcome = "lm_positive", covars = c("name_mingroup", "country", vars_control), 
-  se = "cluster", cluster_var = "name_applicant"
-)
+fit_default_model <- function(covars, outcome = "lm_positive",  interaction = FALSE){
+  rhs_vars <- c(covars, vars_control)
+  get_disc_model(
+    df_exp, outcome = outcome, covars = rhs_vars, 
+    se = "cluster", cluster_var = "name_applicant", interaction = interaction
+  )
+}
 
-m_signal  <- get_disc_model(
-  df_exp, outcome = "lm_positive", covars = c("name_mingroup", "nm_signal_std", "country", vars_control), 
-  se = "cluster", cluster_var = "name_applicant"
-)
+get_output_table <- function(m1, m2, vars2){
+  tbl_merge(list(
+      tbl_regression(m1, include = "name_mingroup", conf.int = FALSE) |> bold_p(),
+      tbl_regression(m2, include = c("name_mingroup", vars2), conf.int = FALSE) |> bold_p()),
+    tab_spanner = c("Model 1", "Model 2")
+  )
+}
 
+m_naive  <- fit_default_model(covars = c("name_mingroup", "country"))
+m_signal  <- fit_default_model(covars = c("name_mingroup", "nm_signal_std", "country"))
 
-tbl_merge(list(
-  tbl_regression(m_naive, include = "name_mingroup", conf.int = FALSE) |> bold_p(),
-  tbl_regression(m_signal, include = c("name_mingroup", "nm_signal_std"), conf.int = FALSE) |> bold_p()),
-  tab_spanner = c("Model 1", "Model 2"))
+get_output_table(m_naive, m_signal, c("name_mingroup", "nm_signal_std"))
 
 ```
 
@@ -288,9 +293,9 @@ Model includes country fixed effects and the following controls: gender, occupat
 
 ## Final considerations
 
-- Limitations:  Small number of names, sample hetereogeneity   
-- Sensitivity analysis: Invitation and rejection as outcome, logistic regression  
-- Next steps: 
+- **Limitations**:  Small number of names, sample hetereogeneity   
+- **Sensitivity analysis**: Invitation and rejection as outcome, logistic regression  
+- **Next steps**: 
   - Name recognition for gatekeepers' profile (cob / education)   
   - Name recognition at the sub-national level   
 
@@ -327,11 +332,27 @@ Sign up to our Newsletter
 :::{#refs}
 :::
 
+# Additional analyses {background-color="#223451"}
+
+
+## Predicted values - Logistic
+
+![](../output/plot_logit_interact.png){fig-align="center" width=90%}
+
+## Predicted values - Invitation
+
+![](../output/plot_interact_inv.png){fig-align="center" width=90%}
+
+
+## Predicted values - Rejection
+
+![](../output/plot_interact_rej.png){fig-align="center" width=90%}
+
 
 ## Correlation - SES
 
 ![](../output/plot_cor_ladder_adj_mean.png){fig-align="center" width=80%}
 
-## Model - SES
+## Predicted values - SES
 
 ![](../output/plot_interact_ses.png){fig-align="center" width=90%}
