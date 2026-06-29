@@ -72,6 +72,8 @@ execute:
   warning: false
 ---
 
+# Motivation {background-color="#223451"}
+
 ## Labour market disadvantage
 
 
@@ -133,22 +135,23 @@ Source: European Union Agency for Fundamental Rights. 2025. Rights of Roma and T
 Source: European Union Agency for Fundamental Rights. 2025. Rights of Roma and Travellers in 13 European Countries: Perspectives from the Roma Survey 2024. LU: Publications Office.
 :::
 
-## {.smaller}
+
+# Field experiment {background-color="#223451"}
+
+
+## 
+
+![](img/es_logowide.png){fig-align="center" width=40%}  
 
 ::: {.columns}
 
-::: {.column  width="50%"}
-![](img/es_logowide.png){fig-align="center"}  
+::: {.column  width="30%"}
 ![](img/es_team.png){fig-align="center"}  
 :::
 
-::: {.column width="50%"}
+::: {.column width="70%"}
 
-<br>
-<br>
-<br>
-
-- Nine countries (BE, CH, CZ, DE, ES, HU, IE, NL, GB)  
+- Nine countries [(BE, CH, CZ, DE, ES, HU, IE, NL, GB)]{.small} 
 - Childcare, Employment, Housing  
 - Current study:
   - Employment  
@@ -156,8 +159,6 @@ Source: European Union Agency for Fundamental Rights. 2025. Rights of Roma and T
   - Cook, Electrician, Forkift driver, Clerk, Receptionist, Store assistant, Sales rep., Comms. manager, Software developer
 :::
 :::
-
-# Field experiment results {background-color="#223451"}
 
 ## Callback rates
 
@@ -176,11 +177,13 @@ Source: European Union Agency for Fundamental Rights. 2025. Rights of Roma and T
 
 # Names survey{background-color="#223451"}
 
-## Names survey {.non-incremental}
+## Names survey 
 
+::: {.nonincremental}
 - Websurvey conducted between Autumn 2023 and early 2024   
 - First names selected among most common on Live Births Registration   
 - Surnames selected in consultation with community organisations   
+:::
 - **Ireland**: 900 participants assessed 10 names each from a list of 130 names  
 - **Spain**: 512 participants assessed 10 names each from a list 140 names
 
@@ -217,7 +220,7 @@ Travellers/Roma: proportion indicating expected ethnicity
 
 ## Correlation
 
-![](../output/plot_cor_nm_signal_mean.png){fig-align="center" width=90%}
+![](../output/plot_cor_nm_signal_std.png){fig-align="center" width=90%}
 
 
 ## Model specification
@@ -257,10 +260,12 @@ fit_default_model <- function(covars, outcome = "lm_positive",  interaction = FA
 
 get_output_table <- function(m1, m2, vars2){
   tbl_merge(list(
-      tbl_regression(m1, include = "name_mingroup", conf.int = FALSE) |> bold_p(),
-      tbl_regression(m2, include = c("name_mingroup", vars2), conf.int = FALSE) |> bold_p()),
+      tbl_regression(m1, include = "name_mingroup", conf.int = FALSE, intercept = TRUE) |> bold_p(),
+      tbl_regression(m2, include = c("name_mingroup", vars2), conf.int = FALSE, intercept = TRUE) |> bold_p()),
     tab_spanner = c("Model 1", "Model 2")
-  )
+  ) |> 
+  as_gt() |> 
+  gt::text_case_match("nm_signal_std" ~ "Signal strength", "name_mingroup" ~ "Ethnic group")
 }
 
 m_naive  <- fit_default_model(covars = c("name_mingroup", "country"))
@@ -271,7 +276,7 @@ get_output_table(m_naive, m_signal, c("name_mingroup", "nm_signal_std"))
 ```
 
 :::{.aside}
-Models include country fixed effects and the following controls: gender, occupation, parental status, citizenship, past unemployment, full time position, childcare success, housing success.
+Models include *country* fixed effects and the following controls: *gender*, *occupation*, *parental status*, *citizenship*, *past unemployment*, *full time position*, *childcare success*, *housing success*.
 :::
 
 ## Interaction between group and signal strength
@@ -285,7 +290,7 @@ Model includes country fixed effects and the following controls: gender, occupat
 ## Final considerations
 
 - **Limitations**:  Small number of names, sample hetereogeneity   
-- **Sensitivity analysis**: [Invitation](#predicted-values---rejection) and [rejection](#correlation---ses) as outcome, logistic regression  
+- **Sensitivity analysis**: [Invitation](#predicted-values---invitation) and [rejection](#predicted-values---rejection) as outcome, logistic regression  
 - **Next steps**: 
   - Name recognition for gatekeepers' profile (cob / education)   
   - Name recognition at the sub-national level   
@@ -336,7 +341,7 @@ Sign up to our Newsletter
 ![](../output/plot_interact_inv.png){fig-align="center" width=90%}
 
 :::{.aside}
-[back](#thank-you)
+[back](#final-considerations)
 :::
 
 ## Predicted values - Rejection
@@ -344,7 +349,7 @@ Sign up to our Newsletter
 ![](../output/plot_interact_rej.png){fig-align="center" width=90%}
 
 :::{.aside}
-[back](#thank-you)
+[back](#final-considerations)
 :::
 
 ## Correlation - SES
@@ -352,7 +357,7 @@ Sign up to our Newsletter
 ![](../output/plot_cor_ladder_adj_mean.png){fig-align="center" width=80%}
 
 :::{.aside}
-[back](#thank-you)
+[back](#final-considerations)
 :::
 
 ## Predicted values - SES
@@ -360,7 +365,7 @@ Sign up to our Newsletter
 ![](../output/plot_interact_ses.png){fig-align="center" width=90%}
 
 :::{.aside}
-[back](#thank-you)
+[back](#final-considerations)
 :::
 
 ## Selection of names for the field experiment 
