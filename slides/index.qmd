@@ -45,6 +45,7 @@ format:
     #chalkboard: true
     highlight-style: github
     bibliography: refs.bib
+    lightbox: true
 editor: 
   markdown: 
     wrap: sentence
@@ -71,7 +72,7 @@ execute:
   warning: false
 ---
 
-## Labour market disadvantage {.smaller}
+## Labour market disadvantage
 
 
 ::: {.notes}
@@ -94,14 +95,14 @@ Common configurations for slides:
 ::: {.columns}
 
 
-::: {.column width="70%"}
+::: {.column width="40%"}
 ![](img/FRA_Employment.png){fig-align="center"}
 :::
 
-::: {.column width="30%"}
+::: {.column width="60%"}
 - **22%** of Irish Travellers in paid work (79% overall pop.)
 - **31%** of Roma in Spain in paid work (71% overall pop.)
-- Differences in education/training levels can only partially explain this employment [@watson_social_2017]
+- Differences in education/training levels can only partially explain these gaps [@watson_social_2017]
 
 :::
 
@@ -112,17 +113,17 @@ Source: European Union Agency for Fundamental Rights. 2025. Rights of Roma and T
 :::
 
 
-## Discrimination in the labour marker {.smaller}
+## Discrimination in the labour marker
 
 <br>
 
 ::: {.columns}
 
-::: {.column  width="70%"}
+::: {.column  width="40%"}
 ![](img/FRA_Discrimination.png){fig-align="center"}
 :::
 
-::: {.column width="30%"}
+::: {.column width="60%"}
 - **84%** of Irish Travellers  
 - **31%** Roma in Spain felt discriminated against when looking for a job  
 :::
@@ -131,13 +132,6 @@ Source: European Union Agency for Fundamental Rights. 2025. Rights of Roma and T
 :::{.aside}
 Source: European Union Agency for Fundamental Rights. 2025. Rights of Roma and Travellers in 13 European Countries: Perspectives from the Roma Survey 2024. LU: Publications Office.
 :::
-
-
-## Field experiments
-
-- Correspondence studies rely on names as signals for characteristics such as gender, ethnicity, religion, race and class [@elder_signaling_2023; @crabtree_validated_2023; @ghekiere_perception_2025] 
-
-- Differences in perception of the signals transmitted by these names [@martiniello_signaling_2022; @crabtree_racially_2022]
 
 ## {.smaller}
 
@@ -174,6 +168,11 @@ Source: European Union Agency for Fundamental Rights. 2025. Rights of Roma and T
 
 ![](../output/plot_discratio.png){fig-align="center" width=80%}
 
+## Names as ethnic markers
+
+- Correspondence studies rely on names as signals for characteristics such as gender, ethnicity, religion, race and class [@elder_signaling_2023; @crabtree_validated_2023; @ghekiere_perception_2025] 
+
+- Differences in perception of the signals transmitted by these names [@martiniello_signaling_2022; @crabtree_racially_2022; @bauer_beware_2026]
 
 # Names survey{background-color="#223451"}
 
@@ -182,8 +181,8 @@ Source: European Union Agency for Fundamental Rights. 2025. Rights of Roma and T
 - Websurvey conducted between Autumn 2023 and early 2024   
 - First names selected among most common on Live Births Registration   
 - Surnames selected in consultation with community organisations   
-- Ireland: 900 participants assessed 10 names each from a list of 130 names  
-- Spain: 512 participants assessed 10 names each from a list 140 names
+- **Ireland**: 900 participants assessed 10 names each from a list of 130 names  
+- **Spain**: 512 participants assessed 10 names each from a list 140 names
 
 ## Identifying names as ethnic majority
 
@@ -197,17 +196,9 @@ Source: European Union Agency for Fundamental Rights. 2025. Rights of Roma and T
 
 ![](../output/plot_ses.png){fig-align="center" width=70%}
 
-## Selection of names for the field experiment 
-
-- Majority: Country origin  
-- Muslim: Religiosity  
-- Black: Skin tone  
-- Roma/Travellers: Direct question ethnicity     
-
 ## Research question  
 
 <br>
-
 
 > Is there a relationship between the average signal strength of the name and callback rates?  
 
@@ -356,3 +347,10 @@ Sign up to our Newsletter
 ## Predicted values - SES
 
 ![](../output/plot_interact_ses.png){fig-align="center" width=90%}
+
+## Selection of names for the field experiment 
+
+- Majority: Country origin  
+- Muslim: Religiosity  
+- Black: Skin tone  
+- Roma/Travellers: Direct question ethnicity     

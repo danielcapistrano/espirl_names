@@ -33,7 +33,7 @@ df_nm <- bind_rows(df_nm, df_nmie)
 
 # Field experiment Ireland and Spain
 df_ie <- read_dta(paste0(data_dir, "ES2_LM_IE_merged_processed.dta"))
-df_sp <- read_dta(paste0(data_dir, "/ES2_LM_ES_merged_processed.dta"))
+df_sp <- read_dta(paste0(data_dir, "ES2_LM_ES_merged_processed.dta"))
 
 # Transforming columns with different labels to factors to bind datasets
 cols_difflabels <- c("ethnic_groups", "region_groups", "app_location", "deliveredat1", "app_photo", "female_photo", "country")
@@ -42,6 +42,8 @@ df_sp <- df_sp |> mutate_at(vars(all_of(cols_difflabels)), ~as_factor(.x))
 
 # Binding datasets
 df_exp <- bind_rows(df_sp, df_ie)
+
+df_exp$surname_applicant <-  word(df_exp$name_applicant, 2)
 
 # Transform ##########################################
 
@@ -111,8 +113,11 @@ df_nm  <-
     mutate(name_applicant = case_when(
       country_survey == "Ireland" & Name == "Said El Moussaoui" ~ "said elmoussaoui",
       country_survey == "Ireland" & Name == "Naima El Amrani" ~ "naima elamrani",
+      country_survey == "Ireland" & Name == "Rachida  El Moussaoui" ~ "rachida elmoussaoui",
+      country_survey == "Ireland" & Name == "Ali El Amrani" ~ "naima elamrani",     
       .default = name_applicant
-    ))
+    )) |> 
+    mutate(surname_applicant = word(name_applicant, 2))
 
 
 

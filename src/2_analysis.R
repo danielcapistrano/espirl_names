@@ -129,7 +129,10 @@ dc_plot_cor <- function(mainvar, x_label, save_plot = TRUE){
       facet_wrap(~majority, scales = "free_x") +
       labs(x = x_label, y = "Positive response", color = "") +
       theme_classic() +
-      theme(legend.position = "top", legend.text = element_text(size = 15))
+      theme(
+        legend.position = "top", 
+        legend.text = element_text(size = 15)
+      )
   
   if(save_plot){
       ggsave(plot_cor, filename = paste0("./output/plot_cor_", mainvar, ".png"), width = 6, height = 3.5)
