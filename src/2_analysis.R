@@ -131,7 +131,9 @@ dc_plot_cor <- function(mainvar, x_label, save_plot = TRUE){
       theme_classic() +
       theme(
         legend.position = "top", 
-        legend.text = element_text(size = 15)
+        axis.title = element_text(size = 13),
+        legend.text = element_text(size = 16),
+        strip.text = element_text(size = 14)
       )
   
   if(save_plot){

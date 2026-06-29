@@ -176,7 +176,7 @@ Source: European Union Agency for Fundamental Rights. 2025. Rights of Roma and T
 
 # Names survey{background-color="#223451"}
 
-## Names survey
+## Names survey {.non-incremental}
 
 - Websurvey conducted between Autumn 2023 and early 2024   
 - First names selected among most common on Live Births Registration   
@@ -285,10 +285,11 @@ Model includes country fixed effects and the following controls: gender, occupat
 ## Final considerations
 
 - **Limitations**:  Small number of names, sample hetereogeneity   
-- **Sensitivity analysis**: Invitation and rejection as outcome, logistic regression  
+- **Sensitivity analysis**: [Invitation](#predicted-values---rejection) and [rejection](#correlation---ses) as outcome, logistic regression  
 - **Next steps**: 
   - Name recognition for gatekeepers' profile (cob / education)   
   - Name recognition at the sub-national level   
+  - Relationship with [social status](#predicted-values---ses)
 
 
 ## Thank you {.hide-logo .inverted }
@@ -334,19 +335,33 @@ Sign up to our Newsletter
 
 ![](../output/plot_interact_inv.png){fig-align="center" width=90%}
 
+:::{.aside}
+[back](#thank-you)
+:::
 
 ## Predicted values - Rejection
 
 ![](../output/plot_interact_rej.png){fig-align="center" width=90%}
 
+:::{.aside}
+[back](#thank-you)
+:::
 
 ## Correlation - SES
 
 ![](../output/plot_cor_ladder_adj_mean.png){fig-align="center" width=80%}
 
+:::{.aside}
+[back](#thank-you)
+:::
+
 ## Predicted values - SES
 
 ![](../output/plot_interact_ses.png){fig-align="center" width=90%}
+
+:::{.aside}
+[back](#thank-you)
+:::
 
 ## Selection of names for the field experiment 
 
